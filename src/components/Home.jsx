@@ -39,7 +39,7 @@ function Home() {
       {/* Right Section - Image (hidden on small devices) */}
       <div className="mt-8 md:mt-0 md:w-1/2 flex justify-center hidden md:flex">
         <img
-          src="../public/images/image.png.jpeg"
+          src="https://res.cloudinary.com/dbx52jxz7/image/upload/v1752352430/image.png_belcw7.jpg"
           alt="User"
           className="h-100 w-90 rounded-full object-cover shadow-lg"
         />
