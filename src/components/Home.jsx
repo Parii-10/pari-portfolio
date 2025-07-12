@@ -27,7 +27,7 @@ function Home() {
 
         <div className='flex flex-row gap-15 ml-14'>
           <button className="bg-white text-black hover:bg-gray-200 font-bold py-2 px-4 rounded w-fit">
-            <a href="" target='blank'>View Resume</a>
+            <a href="https://drive.google.com/file/d/1Ta0CYHbxwLKNjHB6I9bsOjIJgFWozYnE/view?usp=drive_link" target='blank'>View Resume</a>
           </button>
 
           <button className="bg-gray-900 text-white hover:bg-white font-bold py-2 px-4 rounded w-fit">
