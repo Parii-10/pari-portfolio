@@ -18,7 +18,12 @@ body {
 }
 
 /* ===== Typography ===== */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-bold text-white;
 }
 
@@ -67,9 +72,11 @@ textarea:focus {
   0% {
     width: 0;
   }
+
   80% {
     width: 18ch;
   }
+
   100% {
     width: 0;
   }
@@ -80,3 +87,196 @@ textarea:focus {
     border-color: transparent;
   }
 }
+
+.skills-slider {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scrollSkills 25s linear infinite;
+}
+
+.skill-card {
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 15px 28px;
+
+  background: rgba(17, 24, 39, .55);
+
+  border: 1px solid rgba(255, 255, 255, .08);
+
+  border-radius: 18px;
+
+  backdrop-filter: blur(15px);
+
+  white-space: nowrap;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  transition: .35s;
+
+}
+
+.skill-card:hover {
+
+  transform: translateY(-6px);
+
+  border-color: #8b5cf6;
+
+  box-shadow: 0 0 20px rgba(139, 92, 246, .25);
+
+}
+
+@keyframes scrollSkills {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+}
+
+
+.hero-gif-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.hero-gif {
+
+  width: 480px;
+  object-fit: contain;
+
+  mix-blend-mode: screen;
+
+  filter: drop-shadow(0 0 35px rgba(139, 92, 246, .35));
+
+  transform-origin: center center;
+
+  backface-visibility: hidden;
+
+  will-change: transform, opacity;
+
+  transition: transform .35s ease;
+
+}
+
+.hero-gif-container {
+  position: relative;
+}
+
+.thought-cloud {
+
+  position: absolute;
+
+  top: 80px;
+
+  left: -120px;
+
+  padding: 14px 22px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, .08);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, .18);
+
+  color: #fff;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 8px 30px rgba(139, 92, 246, .18);
+
+  opacity: 0;
+
+  animation: thoughtAppear .8s ease forwards;
+
+  animation-delay: 2.7s;
+}
+
+/* circles */
+
+.cloud-dot {
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, .08);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, .18);
+
+}
+
+.cloud-dot.one {
+
+  width: 16px;
+  height: 16px;
+
+  right: -14px;
+  bottom: 24px;
+
+}
+
+.cloud-dot.two {
+
+  width: 11px;
+  height: 11px;
+
+  right: -28px;
+  bottom: 11px;
+
+}
+
+.cloud-dot.three {
+
+  width: 7px;
+  height: 7px;
+
+  right: -40px;
+  bottom: 2px;
+
+}
+
+@keyframes thoughtAppear {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(15px) scale(.8);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0) scale(1);
+
+  }
+
+}
+
+

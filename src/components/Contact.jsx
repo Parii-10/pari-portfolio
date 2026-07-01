@@ -1,99 +1,90 @@
-import React from 'react';
+import React from "react";
+import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { FaEnvelope, FaPhoneVolume } from 'react-icons/fa';
 
 const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
 
 function Contact() {
   const [result, setResult] = React.useState("");
-
   const onSubmit = async (event) => {
     event.preventDefault();
-    setResult("Sending....");
+    setResult("Sending...");
     const formData = new FormData(event.target);
-
     formData.append("access_key", accessToken);
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
+    const response = await fetch(
+      "https://api.web3forms.com/submit",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const data = await response.json();
-
     if (data.success) {
-      setResult("Form Submitted Successfully");
+      setResult("Message Sent Successfully ✅");
       event.target.reset();
     } else {
-      console.log("Error", data);
-      setResult(data.message);
+      setResult("Something went wrong ❌");
     }
   };
 
   return (
-    <div id="contact" className="max-w-6xl mx-auto px-4 py-12 relative z-10 text-white">
-      <h1 className="text-3xl font-bold mb-5">Contact Me</h1>
-      <div className="w-full h-0.5 bg-gray-500 mb-5"></div>
+    <section id="contact" className="max-w-7xl mx-auto px-6 py-24">
+      <div className="mb-14">
+        <p className="text-cyan-400 uppercase tracking-[4px] mb-3"> Contact </p>
+        <h2 className="text-4xl md:text-5xl font-bold"> Let's Work Together </h2>
+      </div>
 
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Contact Form */}
-        <div className="flex-1 bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-md border border-gray-700">
-          <h2 className="text-2xl font-bold mb-2">Send A Message</h2>
-          <div className="w-24 h-1 bg-blue-500 mb-4"></div>
-          <form className="flex flex-col space-y-4" onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              className="bg-gray-800 text-white border border-gray-600 rounded p-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              className="bg-gray-800 text-white border border-gray-600 rounded p-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
-            />
-            <textarea
-              placeholder="Message"
-              name="message"
-              rows="4"
-              className="bg-gray-800 text-white border border-gray-600 rounded p-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
-            />
+      <div className="grid lg:grid-cols-2 gap-10">
+        {/* Left Side */}
+        <div
+          className="bg-[#111827]/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-8">
+          <h3 className="text-2xl font-bold mb-6"> Get In Touch </h3>
+          <p className="text-gray-400 leading-8">
+            I'm currently open to Backend Developer and Software Engineer opportunities. Whether you have an exciting project, a full-time role, or simply want to connect, feel free to reach out. I'd be happy to hear from you.
+          </p>
+          <div className="mt-8 space-y-5">
+            <div className="flex items-center gap-4">
+              <FaEnvelope className="text-purple-400 text-xl" />
+              <span className="text-gray-300">sharmapari10004@gmail.com</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <FaLocationDot className="text-cyan-400 text-xl" />
+              <span className="text-gray-300">Haryana, India</span>
+            </div>
+          </div>
+
+          <div className="flex gap-5 mt-10">
+            <a href="https://github.com/Parii-10" target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center rounded-xl bg-black/30 border border-gray-700 hover:border-purple-500">
+              <FaGithub />
+            </a>
+
+            <a href="https://www.linkedin.com/in/pari-sharma-92713b2a3/" target="_blank" rel="noreferrer" className=" w-12 h-12 flex items-center justify-center rounded-xl bg-black/30 border border-gray-700 hover:border-cyan-500">
+              <FaLinkedin />
+            </a>
+          </div>
+        </div>
+
+        {/* Right Side */}
+        <form onSubmit={onSubmit}
+          className="bg-[#111827]/60 backdrop-blur-xl border border-gray-800 rounded-3xl p-8">
+          <div className="space-y-5">
+            <input type="text" name="name" placeholder="Your Name" required className="w-full bg-black/30 border border-gray-700 rounded-xl p-4 focus:outline-none focus:border-purple-500"/>
+
+            <input type="email" name="email" placeholder="Your Email" required className="w-full bg-black/30 border border-gray-700 rounded-xl p-4 focus:outline-none focus:border-purple-500"/>
+
+            <textarea name="message" rows="6" placeholder="Your Message" required className="w-full bg-black/30 border border-gray-700 rounded-xl p-4 focus:outline-none focus:border-purple-500"/>
+
             <input type="checkbox" name="botcheck" className="hidden" />
 
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-800 text-white font-medium py-2 px-6 rounded w-max"
-            >
-              Send a Message
+            <button type="submit" className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-semibold transition">
+              Send Message
             </button>
 
-            <p className="text-sm text-gray-300">{result}</p>
-          </form>
-        </div>
-
-        {/* Personal Info */}
-        <div className="flex-1 bg-gray-900 bg-opacity-70 rounded-lg p-6 shadow-md border border-gray-700">
-          <h2 className="text-2xl font-bold mb-2">Get in Touch</h2>
-          <div className="w-24 h-1 bg-blue-500 mb-4"></div>
-          <p className="text-lg text-gray-300">Whether you want to get in touch, talk about a project collaboration, or just say hi, I'd love to hear from you.Simply fill the from and send me an email.</p>
-          <br />
-          <p className="text-lg text-gray-300">PARI SHARMA</p>
-          <div className="flex items-center gap-2 mt-2">
-            <FaLocationDot className="h-6 w-6" />
-            <p className="text-lg text-gray-300">Sirsa, Haryana, India</p>
+            <p className="text-green-400"> {result} </p>
           </div>
-          <div className="flex items-center gap-2 mt-2">
-            <FaEnvelope className="h-6 w-6" />
-            <p className="text-lg text-gray-300">sharmapari10004@gmail.com</p>
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <FaPhoneVolume className="h-6 w-6" />
-            <p className="text-lg text-gray-300">+91 9541281999</p>
-          </div>
-        </div>
+        </form>
       </div>
-    </div>
+    </section>
   );
 }
 
