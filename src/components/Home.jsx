@@ -31,11 +31,9 @@ function Home() {
               repeat={Infinity}
             />
           </div>
-
           <p className="mt-8 text-gray-400 text-lg max-w-xl leading-8">
             Junior Backend Developer with professional experience in building scalable backend applications using Java, Spring Boot, MySQL and REST APIs. Passionate about writing clean, maintainable code and solving real-world problems.
           </p>
-
           <div className="flex flex-wrap gap-4 mt-10">
             <a href="#projects" className="px-6 py-3 bg-purple-600 rounded-xl hover:bg-purple-700 transition"> View Projects </a>
             <a href="#contact"className="px-6 py-3 border border-gray-700 rounded-xl hover:border-purple-500 transition"> Contact Me </a>
